@@ -4,8 +4,8 @@ https://github.com/sdsartor/Category-Backend-project
 This project is a backend application that takes the storage of a companies inventory and applies it to an online database where it is stored.  The code allows for multiple changes to the database data, such as update, delete, and adding more items as necessary.
 
 
-##Demo
-![Untitled_ Mar 23, 2023 10_23 PM](https://user-images.githubusercontent.com/116858656/227434597-abfc0e77-eaac-419d-9b5a-415d5260703b.gif)
+## Demo
+(https://user-images.githubusercontent.com/116858656/227434597-abfc0e77-eaac-419d-9b5a-415d5260703b.gif)
 
 ## Installation
 In order to install this code, you must run sql, sequalize, .env, node, express, and have a port open that can access the code.  After this, routes must be made to make the code access the data stored in the seeds.  This will inturn return the data to the user in a structured template that shows the many details of each table.
