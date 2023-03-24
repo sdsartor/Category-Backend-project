@@ -2,6 +2,8 @@
 https://github.com/sdsartor/Category-Backend-project
 ## Description
 This project is a backend application that takes the storage of a companies inventory and applies it to an online database where it is stored.  The code allows for multiple changes to the database data, such as update, delete, and adding more items as necessary.
+
+
 ##Demo
 (https://user-images.githubusercontent.com/116858656/227434208-ef45767c-eb96-4b59-9d67-fc48329c93fa.gif)
 ## Installation
