@@ -9,13 +9,15 @@ router.get('/', async (req, res) => {
     const product = await Product.findAll(({
       include: [
         {
-     model: Product 
+     model: Product,
         },
         {
-      model: Tag
+      model: Tag,
+      attributes: ['id', 'category_name']
         },
         {
-        model: Category
+        model: Category,
+        attributes:['id', 'tag_name']
         },
     ]
     }));
@@ -41,10 +43,12 @@ router.get('/:id', async (req, res) => {
          model: Product 
         },
         {
-          model: Tag
+          model: Tag,
+          attributes:['id', 'tag_name']
             },
             {
-            model: Category
+            model: Category,
+            attributes:['id', 'category_name']
             },
       ]
     });
@@ -68,24 +72,24 @@ router.post('/', (req, res) => {
     tag_Ids: req.body.tagIds,
     category_id: req.body.category_id
   })
-  .then((products) => {
-    if (req.body.tagIds.length) {
-      const productTag = req.body.tagIds.map((tag_id) => {
-        return {
-          product_id: product.id,
-          tag_id,
-        };
-      });
-      return productTag.bulkCreate(productTag);
-    }
-    res.status(200).json(product);
-  })
-.then((productTagIds) => res.status(200).json(productTagIds))
-.catch((err) => {
-  console.err(err);
-  res.status(400).json(err);
-});  
-});
+//   .then((product) => {
+//     if (req.body.tagIds.length) {
+//       const productTag = req.body.tagIds.map((tag_id) => {
+//         return {
+//           product_id: product.id,
+//           tag_id,
+//         };
+//       });
+//       return productTag.bulkCreate(productTag);
+//     }
+//     res.status(200).json(product);
+//   })
+// .then((productTagIds) => res.status(200).json(productTagIds))
+// .catch((err) => {
+//   console.err(err);
+//   res.status(400).json(err);
+// });  
+// });
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -114,6 +118,7 @@ router.post('/', (req, res) => {
       console.log(err);
       res.status(400).json(err);
     });
+  });
 
 // update product
 router.put('/:id', (req, res) => {
