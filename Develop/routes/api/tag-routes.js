@@ -12,7 +12,7 @@ try {
   });
   res.status(200).json(tag);
 } catch (err) {
-  console.log(err);
+  console.error(err);
   res.status(500).json(err);
 
 }
@@ -20,7 +20,7 @@ try {
 
 router.get('/:id', async (req, res) => {
 try {
-  const tag = await Tag.findOne(req.params.id, {
+  const tag = await Tag.findByPk(req.params.id, {
   include: [{ model: Product }],
   });
   if (!tag) {
@@ -29,7 +29,7 @@ try {
   }
   res.status(200).json(tag);
 } catch (err) {
-  console.log(err);
+  console.error(err);
   res.status(500).json(err);
 }
   // find a single tag by its `id`
