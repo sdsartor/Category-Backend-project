@@ -6,6 +6,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // get all products
 router.get('/', async (req, res) => {
   try {
+    // this try function pulls all data having to fo with the models below and adds them under the product get function. 
     const product = await Product.findAll(({
       include: [
         {
@@ -15,11 +16,13 @@ router.get('/', async (req, res) => {
         {
       model: Tag,
       attributes: ['id', 'tag_name']
+      // attributes make data look for specific sections of code. 
         },
      
     ]
     }));
     res.status(200).json(Product);
+    // this json will show all code related to the product constant above. 
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -36,6 +39,7 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Category and Tag data
   try {
     const product = await Product.findByPk(req.params.id, {
+      // similar to .destroy .findbyPK is another necessary command that can't be changed to another phrase. 
     include: [
       {
          model: Product 
@@ -55,6 +59,7 @@ router.get('/:id', async (req, res) => {
       return;
     }
     res.status(200).json(tag);
+    // lower case tag means data is pulled from the seeds. uppercase does nothing. 
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -68,8 +73,10 @@ router.post('/', (req, res) => {
     price: req.body.price,
     stock: req.body.stock,
     tag_Ids: req.body.tagIds,
+    // code must be in this order to have the code in the requested structure. 
     category_id: req.body.category_id
   })
+  
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
