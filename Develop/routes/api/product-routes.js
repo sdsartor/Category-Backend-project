@@ -147,6 +147,7 @@ router.delete('/:id', async (req, res) => {
     const data = await Product.destroy({
       where: { id: req.params.id,
     },
+    //using data as a constant makes it easier to use delete function. 
     });
     if (!data) {
       res.status(404).json({ message: 'The product id is unable to be found or does not exist!'});
@@ -155,6 +156,7 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
+    // this error will return normal 500 warning from json warnings. 
   }
 });
 
