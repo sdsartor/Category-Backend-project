@@ -16,6 +16,7 @@ ProductTag.init(
     product_id: {
       type: DataTypes.INTEGER,
       references: {
+        // references allows for use of foreign keys. 
         model: 'Product',
         key: 'id',
       },
