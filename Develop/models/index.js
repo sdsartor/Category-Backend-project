@@ -23,6 +23,7 @@ Product.belongsToMany(Tag, {
 Tag.belongsToMany(Product, {
   through: ProductTag,
   foreignKey: 'tag_id',
+  // tag_id is found under product tag model and references tag model id
 });
 // Tags belongToMany Products (through ProductTag)
 
